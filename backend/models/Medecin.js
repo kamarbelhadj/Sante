@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
+import Cabinet from "./Cabinet.js";
 const MedecinSchema= new Schema(
     {
       Nom: {
@@ -21,10 +22,9 @@ const MedecinSchema= new Schema(
         unique: true,
         trim:true,
       },
-      Genre: {
+      Gender: {
         type: String,
-        enum: ['homme', 'femme','autre'],
-        required: true
+        enum: ['Homme', 'Femme','autre'],
       },
       NumTel:{
         type:Number,
@@ -34,6 +34,11 @@ const MedecinSchema= new Schema(
         type: String,
         required: true,
         min: 5,
+      },
+      Status: {
+        type: String,
+        enum:['PENDING','APPROVED'],
+        default: 'PENDING',
       },
       PhotoIdPath: {
         type: String,
@@ -74,18 +79,25 @@ const MedecinSchema= new Schema(
         type:String
       },
       Cabinet:{
-        type:CabinetSchema
+        type:Cabinet.schema,
       },
-      Disponibilite:{
-        Jours:[{jour:{type:string,required:true},heurDebut:{type:Date,default:Date.now},heurFin:{type:Date,default:Date.now}}]
+      Disponibilite: {
+        Jours: [
+          {
+            jour: { type: String, required: true },
+            heurDebut: { type: Date, default: Date.now },
+            heurFin: { type: Date, default: Date.now }
+          }
+        ]
       },
       ListPatient:[{
         type:mongoose.Schema.Types.ObjectId,
         required:true,
         ref:'Patient'
-      }]
+      }],
+      role: "string",
     },{ timestamps: true });
 
   const Medecin=mongoose.model('medecin',MedecinSchema);
 
-  module.exports=Medecin;
+  export default Medecin;

@@ -6,6 +6,8 @@ import ConfigPassport from "../config/passport.js";
 import  jwt  from 'jsonwebtoken';
 
 
+
+
 const router = express.Router();
 
 router.post('/',(req,res)=>{
@@ -15,15 +17,11 @@ router.post('/',(req,res)=>{
 router.post('/register',Register);
 /*Login Patient*/
 router.post('/login',Login);
-//test 
+/*Patient Profile*/
 
-router.get('/test',(req,res)=>{
-    jwt.verify(req.rawHeaders[1].split("Beare ")[1],process.env.PRIVATE_KEY,function(err,decoded){
-        console.log(decoded)
-    })
-    console.log(req.rawHeaders['Authorization'])
 
-}
-)
+
+
+
 export default router ;
 

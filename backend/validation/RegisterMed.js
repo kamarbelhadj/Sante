@@ -11,6 +11,9 @@ function ValidateRegister(data){
     data.Gender =!isEmpty(data.Gender)?data.Gender:"";
     data.Password=!isEmpty(data.Password)?data.Password:"";
     data.DateNaissance=!isEmpty(data.DateNaissance)?data.DateNaissance:"";
+    data.PhotoIdPath=!isEmpty(data.PhotoIdPath)?data.PhotoIdPath:"";
+    data.Specialite=!isEmpty(data.Specialite)?data.Specialite:"";
+    
     
     data.ConfirmPassword=!isEmpty(data.ConfirmPassword)?data.ConfirmPassword:"";
     
@@ -52,6 +55,12 @@ function ValidateRegister(data){
     }
     if(validator.isEmpty(data.ConfirmPassword)){
         errors.ConfirmPassword='required ConfirmPassword'
+    }
+    if(validator.isEmpty(data.PhotoIdPath)){
+        errors.PhotoIdPath='required PhotoIdPath'
+    }
+    if(validator.isEmpty(data.Specialite)){
+        errors.Specialite='required Specialite'
     }
 
     return {

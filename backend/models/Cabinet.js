@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 
 const CabinetSchema = new mongoose.Schema({
   Address: {
-    Rue: { type: String, required: true },
-    Ville: { type: String, required: true },
+    Rue: { type: String },
+    Ville: { type: String  },
     Etat: { type: String, required: true },
     Pay: { type: String, required: true },
   },
@@ -15,4 +15,4 @@ const CabinetSchema = new mongoose.Schema({
 
 const Cabinet= mongoose.model('Cabinet',CabinetSchema );
 
-module.exports = Cabinet;
+export default Cabinet;

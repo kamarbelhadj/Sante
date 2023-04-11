@@ -21,9 +21,9 @@ const PatientSchema = new schema(
             unique: true,
             trim:true,
           },
-          Genre: {
+          Gender: {
             type: String,
-            enum: ['homme', 'femme','autre'],
+            enum: ['Homme', 'Femme','autre'],
            
           },
           NumTel:{
@@ -35,6 +35,13 @@ const PatientSchema = new schema(
            
             min: 5,
           },
+          Pays:{
+            type:String,
+          },
+          Gouvernorat:{
+            type: String
+          },
+          
           DateNaissance:{
             type: Date,
            
@@ -46,7 +53,8 @@ const PatientSchema = new schema(
           RendezVous:[{
             type:mongoose.Schema.Types.ObjectId,
             ref:'RendezVous',
-          }]
+          }],
+          role: "string",
           
 },{ timestamps: true });
 
