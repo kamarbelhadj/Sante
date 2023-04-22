@@ -11,7 +11,7 @@ import { fileURLToPath } from "url";
 import router from './routes/PatientRoute.js';
 import routerMed from "./routes/MedecinRoute.js";
 import  passport from "passport";
-import ConfigPassport from "./config/passport.js";
+
 
 
 /* CONFIGURATIONS */
@@ -38,13 +38,11 @@ app.post('/',async (req,res)=>{
 app.use('/Patient',router);
 app.use('/medecin',routerMed)
 //test 
-ConfigPassport (passport);
-app.get('/test', passport.authenticate('jwt', { session: false }),inRole(ROLES.USER),(req, res) => {
-  res.send("Hello Patient")
-  });
-  ConfigPassport (passport);
+
+ 
+  
 app.get('/admin', passport.authenticate('jwt', { session: false }),inRole(ROLES.ADMIN),(req, res) => {
-  res.send("Hello Patient")
+  res.send("Hello Admin")
   });
 
 
